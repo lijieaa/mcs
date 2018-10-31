@@ -1,0 +1,35 @@
+spring:
+ datasource:
+  type: com.alibaba.druid.pool.DruidDataSource
+  url: jdbc:oracle:thin:@//192.168.5.12:1521/orcl
+  username: c##osp
+  password: 123456
+  driverClassName: oracle.jdbc.driver.OracleDriver
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  testWhileIdle: true
+  validationQuery: SELECT 1 FROM DUAL
+  testOnBorrow: false
+  exceptionSorter: true
+  testOnReturn: false
+  poolPreparedStatements: true
+  #filters: stat,wall,log4j
+  filters: stat
+  maxPoolPreparedStatementPerConnectionSize: 20
+  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  useGlobalDataSourceStat: true
+mybatis:
+ config-location: classpath:mybatis-config.xml
+ mapperLocations: classpath:mapper/*.xml
+
+myprops: #自定义的属性和值
+  mqqtHost: tcp://127.0.0.1:1883 #主机地址
+  clientId: mcs #mqtt客户端ID
+  topic: mc/#      #话题
+
+logging:
+  file: log/it.log
